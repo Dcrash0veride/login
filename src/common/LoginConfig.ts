@@ -111,8 +111,9 @@ export class LoginConfig {
 }
 
 async function jwtParser(federatedToken: string) {
+    let custom_url:string = "https://customurl/"
     let tokenPayload = federatedToken.split('.')[1];
     let bufferObj = Buffer.from(tokenPayload, "base64");
     let decodedPayload = JSON.parse(bufferObj.toString("utf8"));
-    return [decodedPayload['iss'], decodedPayload['sub']];
+    return [custom_url, decodedPayload['sub']];
 }
